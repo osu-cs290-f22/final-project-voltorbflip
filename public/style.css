@@ -52,4 +52,22 @@ body {
 
 .hidden {
     display: none;
-  }
+}
+
+
+
+.leaderboard-container {
+    position: absolute;
+    /* visibility: hidden; */
+    left: 0%;
+    top: 10%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    padding: 30px 10px;
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 6px;
+    width: 10%;
+}
