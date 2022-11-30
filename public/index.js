@@ -4,8 +4,29 @@ Written by: Lucas Dunn and Garrett Biwer
 */
 var timerOn = false
 
+function showModal() {
+    var modal = document.getElementById('add-name-modal')
+    var modalBackdrop = document.getElementById('modal-backdrop')
+
+    modal.classList.remove('hidden')
+    modalBackdrop.classList.remove('hidden')
+}
+
+function hideModal() {
+
+    var modal = document.getElementById('add-name-modal')
+    var modalBackdrop = document.getElementById('modal-backdrop')
+
+    var nameInput = document.getElementById('name-input')
+    nameInput.value = ''
+
+    modal.classList.remove('hidden')
+    modalBackdrop.classList.remove('hidden')
+}
+
 function uploadTime(time) {
-    
+    showModal()
+
 
 
 
@@ -16,12 +37,16 @@ function uploadTime(time) {
 
 
 function startTimer() {
+    timerOn = true
     var timer = document.getElementById("Time")
     var sec = 0
     var min = 0
     var timerCount = setInterval(function () {
-        if (!timerOn)
+        if (!timerOn) {
+            var time = {min,sec}
+            uploadTime(time)
             clearInterval(timerCount)
+        }
         sec++
         if (sec === 60) {
             sec = 0
@@ -35,8 +60,7 @@ function startTimer() {
 
         
     }, 1000)
-    var time = {min,sec}
-    uploadTime(time)
+    
 }
 
 
@@ -47,5 +71,10 @@ window.addEventListener('DOMContentLoaded', function () {
     startTimerButton.addEventListener('click', startTimer)
 
 
+    var hideModalButtons = document.getElementsByClassName('modal-hide-button')
+    for (var i = 0; i<hideModalButtons.length; i++)
+        hideModalButtons[i].addEventListener('click',hideModal)
 
+
+    
 })
