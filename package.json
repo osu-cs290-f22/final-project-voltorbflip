@@ -1,0 +1,19 @@
+{
+  "name": "voltorbflipspeedrun",
+  "version": "1.0.0",
+  "description": "A game inspired by Voltorb Flip from Pokemon Soulsilver and Heartgold, with a timer and leaderboard.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/biwerg/cs290_final_project.git"
+  },
+  "author": "Lucas Dunn and Garrett Biwer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/biwerg/cs290_final_project/issues"
+  },
+  "homepage": "https://github.com/biwerg/cs290_final_project#readme"
+}
