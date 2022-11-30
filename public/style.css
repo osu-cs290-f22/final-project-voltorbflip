@@ -61,7 +61,7 @@ body {
 
 .leaderboard-container {
     /* visibility: hidden; */
-    left: 0%;
+    left: 1%;
     top: 10%;
     z-index: 10;
     display: flex;
