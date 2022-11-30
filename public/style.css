@@ -19,12 +19,13 @@ body {
 }
 
 .stats-element {
-    width: 50%;
+    width: auto;
     border: 2px solid lightgray;
     border-radius: 4px;
     padding: 5px;
     background-color: white;
     text-align: center;
+    margin-right: 20px;
 }
 
 .board-container {
