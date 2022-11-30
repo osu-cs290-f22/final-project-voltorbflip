@@ -20,14 +20,18 @@ function hideModal() {
     var nameInput = document.getElementById('name-input')
     nameInput.value = ''
 
-    modal.classList.remove('hidden')
-    modalBackdrop.classList.remove('hidden')
+    modal.classList.add('hidden')
+    modalBackdrop.classList.add('hidden')
 }
 
 function uploadTime(time) {
     showModal()
-
-
+    var header = document.getElementsByClassName('modal-header')
+    if (time.sec < 10)
+        header[0].textContent = 'Your time: ' + time.min + ":0" + time.sec
+    else    
+        header[0].textContent = 'Your time: ' + time.min + ":" + time.sec
+        
 
 
 }
@@ -39,6 +43,7 @@ function uploadTime(time) {
 function startTimer() {
     timerOn = true
     var timer = document.getElementById("Time")
+    timer.textContent = '0:00'
     var sec = 0
     var min = 0
     var timerCount = setInterval(function () {
