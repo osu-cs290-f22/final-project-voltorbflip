@@ -41,6 +41,8 @@ function uploadTime(time) {
 
 
 function startTimer() {
+    var controlPanel = document.getElementById("control-box")
+    controlPanel.classList.add("hidden");
     timerOn = true
     var timer = document.getElementById("Time")
     timer.textContent = '0:00'
