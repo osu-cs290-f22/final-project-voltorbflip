@@ -88,16 +88,27 @@ body {
 
 
 
-.leaderboard-container {
+#leaderboard-container {
     z-index: 10;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 5px 5px;
-    background-color: white;
+    background-color: lightblue;
     border: 3px solid black;
     border-radius: 6px;
-    width: 10%;
+    width: 20%;
+}
+
+
+#leaderboard-header {
+    font-weight: bolder
+}
+
+.leaderboard-time {
+    background-color: white;
+    border-radius: 20%;
+    color: black;
 }
 
 /* This portion of the css is largely based on the css from 
