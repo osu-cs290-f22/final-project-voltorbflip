@@ -48,7 +48,7 @@ body {
 }
 
 .tile-element {
-    position:relative;
+    position: relative;
     align-items: center;
     justify-content: center;
     margin: 4px;
@@ -56,6 +56,18 @@ body {
     font-size: 50px;
     border: 3px solid lightgray;
     background-color: white;
+}
+
+.tile-info-element {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position:relative;
+    margin: 4px;
+    font-weight: 700;
+    font-size: 20px;
+    border: 3px solid lightgray;
+    background-color: lightcoral;
 }
 
 .tile-back a {
@@ -66,10 +78,14 @@ body {
     text-align: center;
 }
 
+.tile-front {
+    text-align: center;
+}
+
 .control-container {
     position: absolute;
     /*visibility: hidden;*/
-    left: 32%;
+    left: 28.25%;
     top: 25%;
     z-index: 10;
     display: flex;
