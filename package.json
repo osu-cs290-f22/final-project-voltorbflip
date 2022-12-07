@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/biwerg/cs290_final_project/issues"
   },
-  "homepage": "https://github.com/biwerg/cs290_final_project#readme"
+  "homepage": "https://github.com/biwerg/cs290_final_project#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }

@@ -127,6 +127,13 @@ body {
     color: black;
 }
 
+.leaderboard-rank {
+    background-color: white;
+    border-radius: 20%;
+    color: black;
+}
+
+
 /* This portion of the css is largely based on the css from 
 https://github.com/osu-cs290-f22/async-communication/blob/main/public/style.css */
 

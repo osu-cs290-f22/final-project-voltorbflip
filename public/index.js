@@ -2,35 +2,76 @@
 This is the index javascript for Voltorb Flip Speedrun
 Written by: Lucas Dunn and Garrett Biwer
 */
+
 var timerOn = false
 var currentTime = {min: 0,sec: 0}
 var total = 0;
 
+
 function addTime(name,currentTime) {
-    var recordInput = {name: name,min: currentTime.min, sec: currentTime.sec}
-    var recordInputString = recordInput.min + ':'
-    if (recordInput.sec < 10)
-        recordInputString += '0' + recordInput.sec
-    else
-        recordInputString += recordInput.sec
-    var leaderboardData = document.getElementById('leaderboard-contents')
-
-    var recordItem = document.createElement('div')
-    recordItem.classList.add('leaderboard-item')
-    recordItem.textContent = recordInput.name + ' '
-
-    var spanTime = document.createElement('span')
-    spanTime.classList.add('leaderboard-time')
-    spanTime.textContent = recordInputString
-    recordItem.appendChild(spanTime)
-
-    leaderboardData.appendChild(recordItem)
+    
+    fetch('/addTime',{
+        method: "POST",
+        body: JSON.stringify({
+            name: name,
+            min: currentTime.min,
+            sec: currentTime.sec
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then( function (res) {
+        if (res.status === 200) {
+            //showLeaderboard()
+        } else {
+            alert("Unable to update leaderboard due to error " + res.status)
+        } 
+    }).catch( function(err){
+        alert("An error occured: " + err)
+    })
 
     currentTime = {min: 0,sec: 0}
 
 }
 
+// <div class="leaderboard-item">
+//      <span class="leaderboard-rank">2</span> GAB <span class="leaderboard-time">7:47</span>
+// </div>
 
+// function createLeaderboardItem (leaderboardObject) {
+//     var timeString = leaderboardObject.min + ':'
+//     if (leaderboardObject.sec < 10)
+//         timeString += '0' + leaderboardObject.sec
+//     else
+//         timeString += leaderboardObject.sec
+
+//     var entry = document.createElement('div')
+//     entry.classList.add('leaderboard-item')
+
+//     var spanRank = document.createElement('span')
+//     spanRank.classList.add('leaderboard-rank')
+//     spanRank.textContent = leaderboardObject.rank
+//     entry.appendChild(spanRank)
+
+//     entry.textContent = ' ' + leaderboardObject.name + ' '
+
+//     var spanTime = document.createElement('span')
+//     spanTime.classList.add('leaderboard-time')
+//     spanTime.textContent = timeString
+//     entry.appendChild(spanTime)
+
+//     return entry
+// }
+
+
+
+
+// function showLeaderboard() {
+//     var leaderboard = document.getElementById('leaderboard-contents')
+//     for (var i = 0; i<9; i++) {
+//         leaderboard.appendChild(createLeaderboardItem(leaderboardData[i]))
+//     }
+// }
 
 
 
@@ -185,6 +226,8 @@ document.getElementById("tile-25-back").onclick = flip;
 
 
 window.addEventListener('DOMContentLoaded', function () {
+    //showLeaderboard()
+
     var startTimerButton = document.getElementById('start-timer-button')
     startTimerButton.addEventListener('click', startTimer)
 

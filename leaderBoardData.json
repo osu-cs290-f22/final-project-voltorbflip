@@ -1,0 +1,68 @@
+[
+    {
+        "rank": 1,
+        "name": "LKD",
+        "min": 1,
+        "sec": 15
+    },
+    {
+        "rank": 2,
+        "name": "GAB",
+        "min": 1,
+        "sec": 30
+    },
+    {
+        "rank": 3,
+        "name": "CO",
+        "min": 1,
+        "sec": 45
+    },
+    {
+        "rank": 4,
+        "name": "GM",
+        "min": 2,
+        "sec": 0
+    },
+    {
+        "rank": 5,
+        "name": "BGD",
+        "min": 2,
+        "sec": 15
+    },
+    {
+        "rank": 6,
+        "name": "AD",
+        "min": 2,
+        "sec": 30
+    },
+    {
+        "rank": 7,
+        "name": "HJ",
+        "min": 2,
+        "sec": 45
+    },
+    {
+        "rank": 8,
+        "name": "JD",
+        "min": 3,
+        "sec": 0
+    },
+    {
+        "rank": 9,
+        "name": "RH",
+        "min": 3,
+        "sec": 15
+    },
+    {
+        "rank": 0,
+        "name": "ZA",
+        "min": 1,
+        "sec": 30
+    },
+    {
+        "rank": 0,
+        "name": "ZA",
+        "min": 1,
+        "sec": 30
+    }
+]

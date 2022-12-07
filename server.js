@@ -5,21 +5,20 @@ Written by: Lucas Dunn
 
 var fs = require('fs')
 var express = require('express')
-var exphbs = require('express-handlebars')
+// var exphbs = require('express-handlebars')
 
 var leaderboardData = require('./leaderboardData.json')
 
 var app = express()
-var port = process.env.PORT || 8000
+var port = process.env.PORT || 3000
 
-app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }))
-app.set('view engine', 'handlebars')
+// app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }))
+// app.set('view engine', 'handlebars')
 
 app.use(express.json())
 
 
 app.use(express.static('public'))
-
 
 
 function sortLeaderboard(leaderboardData) {
@@ -41,11 +40,11 @@ app.post('/addTime', function(req,res,next) {
         }
         leaderboardData.push(time)
 
-        sortLeaderboard(leaderboardData)
+        //sortLeaderboard(leaderboardData)
 
         fs.writeFile(
             './leaderboardData.json',
-            JSON.stringify(leaderboardData, null, 2),
+            JSON.stringify(leaderboardData, null, 4),
             function(err) {
                 if(err) {
                     res.status(500).send('Error writing to server')
@@ -58,3 +57,8 @@ app.post('/addTime', function(req,res,next) {
         res.status(400).send('Request didn\'t have a name and time')
     }
 })
+
+
+app.listen(port, function () {
+    console.log("== Server is listening on port", port);
+  })
