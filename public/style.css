@@ -86,7 +86,7 @@ body {
     position: absolute;
     /*visibility: hidden;*/
     left: 28.25%;
-    top: 25%;
+    top: 60%;
     z-index: 10;
     display: flex;
     justify-content: center;

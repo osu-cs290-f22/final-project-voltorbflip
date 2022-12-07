@@ -6,8 +6,61 @@ Written by: Lucas Dunn and Garrett Biwer
 var timerOn = false
 var currentTime = {min: 0,sec: 0}
 var total = 0;
+var points;
+var board = [
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1]
+]
 
+function rnd(min,max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}
 
+function createBoard() {
+    for (var r = 0; r < 5; r++){
+        for (var c = 0; c < 5; c++){
+            board[r][c] = 1;
+        }
+    }
+    var bombs = 0;
+    points = 0;
+    var pointsLeft = rnd(9,12);
+    points = pointsLeft;
+    var row;
+    var col;
+    var val;
+    while (bombs < 6) {
+        row = rnd(0,4);
+        col = rnd(0,4);
+        if (board[row][col] == 1){
+            board[row][col] = 0;
+            bombs++;
+        }
+    }
+    while (pointsLeft > 0) {
+        row = rnd(0,4);
+        col = rnd(0,4);
+        if (board[row][col] == 1){
+            if (pointsLeft == 4){
+                val = 2
+            }
+            else if (pointsLeft == 3){
+                val = 3;
+            }
+            else if (pointsLeft == 2){
+                val = 2;
+            }
+            else {
+                val = rnd(2,3);
+            }
+            board[row][col] = val;
+            pointsLeft = pointsLeft - val;
+        }
+    }
+}
 function addTime(name,currentTime) {
     
     fetch('/addTime',{
@@ -136,6 +189,7 @@ function showControlPanel() {
 
 function startTimer() {
     hideControlPanel()
+    resetBoard();
     timerOn = true
     var timer = document.getElementById("Time")
     timer.textContent = '0:00'
@@ -144,12 +198,12 @@ function startTimer() {
     var timerCount = setInterval(function () {
         if (!timerOn) {
             currentTime = {min: min,sec: sec}
-            if (total == 9){
+            if (total == points){
                 uploadTime()
             }
+            showTiles();
             showControlPanel()
             clearInterval(timerCount)
-            resetBoard();
         }
         sec++
         if (sec === 60) {
@@ -166,15 +220,68 @@ function startTimer() {
     }, 1000)
     
 }
+function showTiles() {
+    var tiles = document.getElementsByClassName('tile-front');
+    for (var i = 0; i < tiles.length; i++) {
+        tiles[i].classList.remove("hidden");
+    }
+    tiles = document.getElementsByClassName('tile-back');
+    for (var i = 0; i < tiles.length; i++) {
+        tiles[i].classList.add("hidden");
+    }
+}
 function resetBoard(){
     total = 0;
+    createBoard();
     var tiles = document.getElementsByClassName('tile-front');
     for (var i = 0; i < tiles.length; i++) {
         tiles[i].classList.add("hidden");
+        tiles[i].firstElementChild.textContent = board[Math.floor(i / 5)][i % 5];
+        tiles[i].parentElement.setAttribute("data-value", board[Math.floor(i / 5)][i % 5]);
     }
     tiles = document.getElementsByClassName('tile-back');
     for (var i = 0; i < tiles.length; i++) {
         tiles[i].classList.remove("hidden");
+    }
+    tiles = document.getElementsByClassName('info-points');
+    for (var i = 0; i < 5; i++) {
+        var count = 0;
+        for (var k = 0; k < 5; k++) {
+            if (board[i][k] > 0) {
+                count = count + board[i][k];
+            }
+        }
+        tiles[i].textContent = count;
+    }
+    tiles = document.getElementsByClassName('info-bombs');
+    for (var i = 0; i < 5; i++) {
+        var count = 0;
+        for (var k = 0; k < 5; k++) {
+            if (board[i][k] == 0) {
+                count++;
+            }
+        }
+        tiles[i].textContent = count;
+    }
+    tiles = document.getElementsByClassName('info-points');
+    for (var i = 0; i < 5; i++) {
+        var count = 0;
+        for (var k = 0; k < 5; k++) {
+            if (board[k][i] > 0) {
+                count = count + board[k][i];
+            }
+        }
+        tiles[i+5].textContent = count;
+    }
+    tiles = document.getElementsByClassName('info-bombs');
+    for (var i = 0; i < 5; i++) {
+        var count = 0;
+        for (var k = 0; k < 5; k++) {
+            if (board[k][i] == 0) {
+                count++;
+            }
+        }
+        tiles[i+5].textContent = count;
     }
 }
 
@@ -191,7 +298,7 @@ const flip = function() {
         else {
             if (value != 1){
                 total = parseInt(value) + total;
-                if (total == 9){
+                if (total == points){
                     timerOn = false;
                 }
             }
@@ -230,7 +337,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
     var startTimerButton = document.getElementById('start-timer-button')
     startTimerButton.addEventListener('click', startTimer)
-
 
     var hideModalButtons = document.getElementsByClassName('modal-hide-button')
     for (var i = 0; i<hideModalButtons.length; i++)
