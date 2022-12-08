@@ -1,44 +1,44 @@
 [
     {
-        "name": "LKD",
-        "min": 1,
-        "sec": 8,
-        "lowsec": true
-    },
-    {
-        "name": "GAB",
-        "min": 1,
-        "sec": 30,
+        "name": "FIR",
+        "min": 0,
+        "sec": 19,
         "lowsec": false
     },
     {
-        "name": "RH",
-        "min": 1,
-        "sec": 45,
+        "name": "TWO",
+        "min": 0,
+        "sec": 19,
         "lowsec": false
     },
     {
-        "name": "ZA",
-        "min": 1,
-        "sec": 30,
+        "name": "RG",
+        "min": 0,
+        "sec": 18,
         "lowsec": false
     },
     {
         "name": "HJ",
         "min": 0,
-        "sec": 15,
+        "sec": 13,
         "lowsec": false
     },
     {
-        "name": "G",
-        "min": 1,
-        "sec": 4,
+        "name": "TJ",
+        "min": 0,
+        "sec": 12,
+        "lowsec": false
+    },
+    {
+        "name": "TT",
+        "min": 0,
+        "sec": 7,
         "lowsec": true
     },
     {
-        "name": "G",
-        "min": 1,
-        "sec": 4,
-        "lowsec": true
+        "name": "WHY",
+        "min": 0,
+        "sec": 13,
+        "lowsec": false
     }
 ]

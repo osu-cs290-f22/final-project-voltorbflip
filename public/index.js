@@ -74,8 +74,7 @@ function smaller(itemA, itemB) {
 
 
 function addTime(name,currentTime) {
-    
-    console.log(name, currentTime)
+    console.log("Data sent: " + name + ' ' + currentTime.min + ':' + currentTime.sec)
     fetch("/home/addTime", {
         method: "POST",
         body: JSON.stringify({
@@ -97,18 +96,15 @@ function addTime(name,currentTime) {
                 sec: currentTime.sec,
                 lowsec: currentTime.sec<10? true:false
             })
-            leaderboard.insertAdjacentHTML('beforeend', newPhotoCardHTML)
-
-
+            leaderboard.insertAdjacentHTML('beforeend', newItemHTML)
+            currentTime = {min: 0, sec: 0}
         } else {
             alert("Unable to update leaderboard due to error " + res.status)
         } 
     }).catch( function(err){
-        alert("An error occured: " + err)
+        console.log(err)
+        alert("An error occured: ")
     })
-
-    currentTime = {min: 0,sec: 0}
-
 }
 
 // <div class="leaderboard-item">

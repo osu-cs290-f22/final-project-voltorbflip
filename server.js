@@ -6,6 +6,7 @@ Written by: Lucas Dunn
 var fs = require('fs')
 var express = require('express')
 var exphbs = require('express-handlebars')
+var bodyParser = require('body-parser')
 
 var leaderboardData = require('./leaderboardData.json')
 
@@ -15,7 +16,10 @@ var port = process.env.PORT || 3000
 app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
+app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.json())
+app.use(bodyParser.json())
+
 
 
 app.use(express.static('public'))
@@ -98,19 +102,14 @@ app.get('*', function(req,res,next) {
 
 app.post('/home/addTime', function(req,res,next) {
     console.log('Request recieved')
-    console.log(req.body)
-    // console.log(req.body)
-    // console.log(req.body && req.body.name && req.body.min && req.body.sec)
-    if (req.body && req.body.name && req.body.min && req.body.sec) {
+    if (req.body) {
         var item = {
             name: req.body.name,
             min: req.body.min,
             sec: req.body.sec,
             lowsec: req.body.sec<10? true:false
         }
-
         leaderboardData.push(item)
-
         fs.writeFile(
             './leaderboardData.json',
             JSON.stringify(leaderboardData, null, 4),
