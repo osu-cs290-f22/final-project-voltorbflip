@@ -145,6 +145,20 @@ function addTime(name,currentTime) {
 //         leaderboard.appendChild(createLeaderboardItem(leaderboardData[i]))
 //     }
 // }
+function badWord(text) {
+
+    // These banned words were received from: https://www.wired.com/2016/09/science-swear-words-warning-nsfw-af/#:~:text=The%20three-letter%20words%20included%20in%20the%20list%20are,slag%2C%20slut%2C%20spic%2C%20suck%2C%20turd%2C%20twat%2C%20and%20wank.
+
+    var badwords = ['ASS', 'CUM', 'FAG', 'GAY', 'JEW', 'GOD', 'TIT']
+    for (var i = 0; i<7; i++) {
+        if (text===badwords[i])
+            return true
+    }
+    return false
+
+}
+
+
 
 
 
@@ -171,8 +185,13 @@ function hideModalAndClearContents() {
 function hideModalAndAcceptContents() {
     var nameInput = document.getElementById('name-input')
 
+    nameInput.value = nameInput.value.toUpperCase()
     if (nameInput.value === '') {
         alert('Please input your name!')
+        return
+    } else if (badWord(nameInput.value)) {   
+        alert('You sly dog')
+        nameInput.value = ''
         return
     }
 
@@ -180,7 +199,7 @@ function hideModalAndAcceptContents() {
     var modal = document.getElementById('add-name-modal')
     var modalBackdrop = document.getElementById('modal-backdrop')
 
-    nameInput.value = nameInput.value.toUpperCase()
+    
 
     console.log("Input: " + nameInput.value + ' ' + currentTime)
 
