@@ -4,7 +4,8 @@
   "description": "A game inspired by Voltorb Flip from Pokemon Soulsilver and Heartgold, with a timer and leaderboard.",
   "main": "index.js",
   "scripts": {
-    "test": "node server.js"
+    "start": "node server.js",
+    "build": "./node_modules/.bin/handlebars ./views/partials/leaderboardItem.handlebars -f ./public/leaderboardItemTemplate.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,8 @@
   },
   "homepage": "https://github.com/biwerg/cs290_final_project#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6",
+    "handlebars": "^4.7.7"
   }
 }

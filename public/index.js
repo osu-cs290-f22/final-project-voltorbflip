@@ -61,9 +61,22 @@ function createBoard() {
         }
     }
 }
+
+function smaller(itemA, itemB) {
+    if (itemA.min < itemB.min) {
+        return true
+    } else if (itemB.min < itemA.min) {
+        return false
+    } else {
+        return itemA.sec < itemB.sec? true:false
+    }
+}
+
+
 function addTime(name,currentTime) {
     
-    fetch('/addTime',{
+    console.log(name, currentTime)
+    fetch("/home/addTime", {
         method: "POST",
         body: JSON.stringify({
             name: name,
@@ -75,7 +88,18 @@ function addTime(name,currentTime) {
         }
     }).then( function (res) {
         if (res.status === 200) {
-            //showLeaderboard()
+            var leaderboard = document.getElementById('leaderboard-contents')
+            
+            var leaderboardItemTemplate = Handlebars.templates.leaderboardItem
+            var newItemHTML = leaderboardItemTemplate({
+                name: name,
+                min: currentTime.min,
+                sec: currentTime.sec,
+                lowsec: currentTime.sec<10? true:false
+            })
+            leaderboard.insertAdjacentHTML('beforeend', newPhotoCardHTML)
+
+
         } else {
             alert("Unable to update leaderboard due to error " + res.status)
         } 
@@ -161,6 +185,9 @@ function hideModalAndAcceptContents() {
     var modalBackdrop = document.getElementById('modal-backdrop')
 
     nameInput.value = nameInput.value.toUpperCase()
+
+    console.log("Input: " + nameInput.value + ' ' + currentTime)
+
     addTime(nameInput.value,currentTime)
 
     modal.classList.add('hidden')
@@ -291,7 +318,7 @@ const flip = function() {
         this.parentElement.classList.add("hidden");
         this.parentElement.previousElementSibling.classList.remove("hidden");
         value = this.parentElement.parentElement.getAttribute("data-value");
-        console.log(value);
+        // console.log(value);
         if (value == 0){
             timerOn = false;
         }
