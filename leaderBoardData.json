@@ -1,56 +1,44 @@
 [
     {
-        "name": "FIR",
-        "min": 0,
-        "sec": 19,
-        "lowsec": false
-    },
-    {
-        "name": "TWO",
-        "min": 0,
-        "sec": 19,
-        "lowsec": false
-    },
-    {
-        "name": "RG",
-        "min": 0,
-        "sec": 18,
-        "lowsec": false
-    },
-    {
-        "name": "HJ",
-        "min": 0,
-        "sec": 13,
-        "lowsec": false
-    },
-    {
-        "name": "TJ",
-        "min": 0,
-        "sec": 12,
-        "lowsec": false
-    },
-    {
-        "name": "TT",
+        "name": "GA6",
         "min": 0,
         "sec": 7,
         "lowsec": true
     },
     {
-        "name": "WHY",
-        "min": 0,
-        "sec": 13,
-        "lowsec": false
-    },
-    {
         "name": "GAB",
         "min": 0,
-        "sec": 26,
+        "sec": 21,
         "lowsec": false
     },
     {
-        "name": "BEH",
+        "name": "GA2",
         "min": 0,
-        "sec": 31,
+        "sec": 35,
+        "lowsec": false
+    },
+    {
+        "name": "GA3",
+        "min": 0,
+        "sec": 40,
+        "lowsec": false
+    },
+    {
+        "name": "GA4",
+        "min": 0,
+        "sec": 46,
+        "lowsec": false
+    },
+    {
+        "name": "GA5",
+        "min": 0,
+        "sec": 55,
+        "lowsec": false
+    },
+    {
+        "name": "GA7",
+        "min": 0,
+        "sec": 25,
         "lowsec": false
     }
 ]

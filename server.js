@@ -9,6 +9,11 @@ var exphbs = require('express-handlebars')
 var bodyParser = require('body-parser')
 
 var leaderboardData = require('./leaderboardData.json')
+leaderboardData = leaderboardData.sort((a,b) => {
+    if ((a.min <= b.min) && (a.sec < b.sec)) {
+        return -1;
+    }
+});
 
 var app = express()
 var port = process.env.PORT || 3000
@@ -32,6 +37,14 @@ function smaller(itemA, itemB) {
     } else {
         return itemA.sec < itemB.sec? true:false
     }
+}
+
+function sortLeaderboard(){
+    leaderboardData = leaderboardData.sort((a,b) => {
+        if ((a.min <= b.min) && (a.sec < b.sec)) {
+            return -1;
+        }
+    });
 }
 
 
@@ -124,6 +137,7 @@ app.post('/home/addTime', function(req,res,next) {
     } else {
         res.status(400).send('Request didn\'t have a name and time')
     }
+    sortLeaderboard();
 })
 
 
