@@ -358,7 +358,9 @@ const flip = function() {
                     }
                     else {
                         level++;
-                        createBoard();
+                        setTimeout(function(){
+                            createBoard();
+                        },500);
                     }
                 }
             }
