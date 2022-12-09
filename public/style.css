@@ -136,6 +136,13 @@ body {
 }
 
 
+#instructions {
+    position: absolute;
+    top: 500px;
+}
+
+
+
 /* This portion of the css is largely based on the css from 
 https://github.com/osu-cs290-f22/async-communication/blob/main/public/style.css */
 
