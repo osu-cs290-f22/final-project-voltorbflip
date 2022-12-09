@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
+    "prestart": "npm run build",
     "build": "./node_modules/.bin/handlebars ./views/partials/leaderboardItem.handlebars -f ./public/leaderboardItemTemplate.js"
   },
   "repository": {
