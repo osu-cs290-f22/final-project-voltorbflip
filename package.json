@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "prestart": "npm run build",
-    "build": "./node_modules/.bin/handlebars ./views/partials/leaderboardItem.handlebars -f ./public/leaderboardItemTemplate.js"
+    "build": "handlebars views/partials/leaderboardItem.handlebars -f public/leaderboardItemTemplate.js"
   },
   "repository": {
     "type": "git",

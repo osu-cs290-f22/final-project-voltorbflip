@@ -40,5 +40,17 @@
         "min": 0,
         "sec": 13,
         "lowsec": false
+    },
+    {
+        "name": "GAB",
+        "min": 0,
+        "sec": 26,
+        "lowsec": false
+    },
+    {
+        "name": "BEH",
+        "min": 0,
+        "sec": 31,
+        "lowsec": false
     }
 ]
