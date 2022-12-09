@@ -7,6 +7,7 @@ var timerOn = false
 var currentTime = {min: 0,sec: 0}
 var total = 0;
 var points;
+var level = 1;
 var board = [
     [1, 1, 1, 1, 1],
     [1, 1, 1, 1, 1],
@@ -14,52 +15,60 @@ var board = [
     [1, 1, 1, 1, 1],
     [1, 1, 1, 1, 1]
 ]
+var levels = {
+    "1": [[3,1,6],[0,3,6],[5,0,6],[2,2,6],[4,1,6]],
+    "2": [[1,3,7],[6,0,7],[3,2,7],[0,4,7],[5,1,7]],
+    "3": [[2,3,8],[7,0,8],[4,2,8],[1,4,8],[6,1,8]],
+    "4": [[3,3,8],[0,5,8],[8,0,10],[5,2,10],[2,4,10]],
+    "5": [[7,1,10],[4,3,10],[1,5,10],[9,0,10],[6,2,10]]
+}
 
 function rnd(min,max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
 function createBoard() {
+    var levelElem = document.getElementById("level");
+    levelElem.textContent = level;
+    total = 0;
+    var seed = rnd(0,5);
     for (var r = 0; r < 5; r++){
         for (var c = 0; c < 5; c++){
             board[r][c] = 1;
         }
     }
-    var bombs = 0;
-    points = 0;
-    var pointsLeft = rnd(9,12);
-    points = pointsLeft;
+    var twos = levels[level][seed][0];
+    var threes = levels[level][seed][1];
+    var bombs = levels[level][seed][2];
+    points = (twos*2)+(threes*3);
     var row;
     var col;
     var val;
-    while (bombs < 6) {
-        row = rnd(0,4);
-        col = rnd(0,4);
+    while (bombs > 0) {
+        row = rnd(0,5);
+        col = rnd(0,5);
         if (board[row][col] == 1){
             board[row][col] = 0;
-            bombs++;
+            bombs--;
         }
     }
-    while (pointsLeft > 0) {
-        row = rnd(0,4);
-        col = rnd(0,4);
+    while (twos > 0) {
+        row = rnd(0,5);
+        col = rnd(0,5);
         if (board[row][col] == 1){
-            if (pointsLeft == 4){
-                val = 2
-            }
-            else if (pointsLeft == 3){
-                val = 3;
-            }
-            else if (pointsLeft == 2){
-                val = 2;
-            }
-            else {
-                val = rnd(2,3);
-            }
-            board[row][col] = val;
-            pointsLeft = pointsLeft - val;
+            board[row][col] = 2;
+            twos--;
         }
     }
+    while (threes > 0) {
+        row = rnd(0,5);
+        col = rnd(0,5);
+        if (board[row][col] == 1){
+            board[row][col] = 3;
+            threes--;
+        }
+    }
+    setBoard();
 }
 
 function smaller(itemA, itemB) {
@@ -240,7 +249,7 @@ function startTimer() {
     var timerCount = setInterval(function () {
         if (!timerOn) {
             currentTime = {min: min,sec: sec}
-            if (total == points){
+            if ((level == 5) && (total == points)){
                 uploadTime()
             }
             showTiles();
@@ -273,8 +282,11 @@ function showTiles() {
     }
 }
 function resetBoard(){
-    total = 0;
+    level = 1;
     createBoard();
+}
+
+function setBoard() {
     var tiles = document.getElementsByClassName('tile-front');
     for (var i = 0; i < tiles.length; i++) {
         tiles[i].classList.add("hidden");
@@ -341,7 +353,13 @@ const flip = function() {
             if (value != 1){
                 total = parseInt(value) + total;
                 if (total == points){
-                    timerOn = false;
+                    if (level == 5){
+                        timerOn = false;
+                    }
+                    else {
+                        level++;
+                        createBoard();
+                    }
                 }
             }
         }
