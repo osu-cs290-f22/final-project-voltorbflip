@@ -1,3 +1,8 @@
 [
-    
+    {
+        "name": "LKD",
+        "min": 1,
+        "sec": 34,
+        "lowsec": false
+    }
 ]
