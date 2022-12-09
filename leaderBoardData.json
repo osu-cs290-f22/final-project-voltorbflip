@@ -1,5 +1,11 @@
 [
     {
+        "name": "GA8",
+        "min": 0,
+        "sec": 6,
+        "lowsec": true
+    },
+    {
         "name": "GA6",
         "min": 0,
         "sec": 7,
@@ -9,6 +15,12 @@
         "name": "GAB",
         "min": 0,
         "sec": 21,
+        "lowsec": false
+    },
+    {
+        "name": "GA7",
+        "min": 0,
+        "sec": 25,
         "lowsec": false
     },
     {
@@ -36,9 +48,9 @@
         "lowsec": false
     },
     {
-        "name": "GA7",
+        "name": "GA9",
         "min": 0,
-        "sec": 25,
-        "lowsec": false
+        "sec": 8,
+        "lowsec": true
     }
 ]

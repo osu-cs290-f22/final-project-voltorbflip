@@ -98,6 +98,7 @@ function addTime(name,currentTime) {
             })
             leaderboard.insertAdjacentHTML('beforeend', newItemHTML)
             currentTime = {min: 0, sec: 0}
+            location.reload();
         } else {
             alert("Unable to update leaderboard due to error " + res.status)
         } 
@@ -194,7 +195,6 @@ function hideModalAndAcceptContents() {
         nameInput.value = ''
         return
     }
-
 
     var modal = document.getElementById('add-name-modal')
     var modalBackdrop = document.getElementById('modal-backdrop')
