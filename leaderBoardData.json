@@ -5,4 +5,10 @@
         "sec": 34,
         "lowsec": false
     }
+    {
+        "name": "GAB",
+        "min": 1,
+        "sec": 58,
+        "lowsec": false
+    }
 ]
