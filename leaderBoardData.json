@@ -48,9 +48,38 @@
         "lowsec": false
     },
     {
+        "name": "GFR",
+        "min": 0,
+        "sec": 57,
+        "lowsec": false
+    },
+    {
+        "name": "GF",
+        "min": 0,
+        "sec": 34,
+        "lowsec": false
+    },
+    {
+        "name": "G3",
+        "min": 0,
+        "sec": 23,
+        "lowsec": false
+    },
+    {
+        "name": "GA4",
+        "min": 0,
+        "sec": 6,
+        "lowsec": false
+    },
+    {
         "name": "GA9",
         "min": 0,
         "sec": 8,
         "lowsec": true
     }
+
+
+
+
+
 ]

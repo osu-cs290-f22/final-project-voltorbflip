@@ -14,6 +14,7 @@ leaderboardData = leaderboardData.sort((a,b) => {
         return -1;
     }
 });
+leaderboardData = leaderboardData.slice(0,10)
 
 var app = express()
 var port = process.env.PORT || 3000
